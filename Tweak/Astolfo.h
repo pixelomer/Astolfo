@@ -22,3 +22,6 @@ NSString* astolfoAlphaValue = @"1.0";
 
 @interface AFUISiriViewController : UIViewController
 @end
+
+@interface SiriPresentationViewController : UIViewController
+@end

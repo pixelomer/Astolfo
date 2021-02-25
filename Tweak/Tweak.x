@@ -31,13 +31,20 @@ static void LoadAstolfo(__kindof UIViewController *self) {
 		if (data) {
 			// We have the data. Let's try creating an image object with it.
 			Astolfo_FLAnimatedImage *animatedImage = [Astolfo_FLAnimatedImage animatedImageWithGIFData:data];
-			if (animatedImage) {
-				// It is a valid image! It may or may not be a GIF.
-				// Astolfo_FLAnimatedImage handles both animated and static images.
+			if (animatedImage && ([animatedImage frameCount] > 1)) {
+				// It is a GIF!
 				astolfoImageView.animatedImage = animatedImage;
 			}
 			else {
-				// Error handling code: Not sure what this data contains.
+				// It is not a GIF.
+				UIImage *staticImage = [UIImage imageWithData:data];
+				if (staticImage) {
+					// It is a static image.
+					astolfoImageView.image = staticImage;
+				}
+				else {
+					// Error handling code: Not sure what this data contains.
+				}
 			}
 		}
 		else {
@@ -56,12 +63,14 @@ static void LoadAstolfo(__kindof UIViewController *self) {
 }
 
 static void FadeAstolfo(BOOL fadeIn) {
+	if (fadeIn) {
+		[astolfoImageView startAnimating];
+	}
 	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		[astolfoImageView setAlpha:(fadeIn ? [astolfoAlphaValue doubleValue] : 0.0)];
 	} completion:^(BOOL fullyAnimated){
-		if (fullyAnimated) {
-			astolfoImageView.image = nil;
-			astolfoImageView.animatedImage = nil;
+		if (!fadeIn && fullyAnimated) {
+			[astolfoImageView stopAnimating];
 		}
 	}];
 }
