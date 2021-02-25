@@ -5,7 +5,7 @@
 #import <CepheiPrefs/HBAppearanceSettings.h>
 #import <Cephei/HBPreferences.h>
 #import <Cephei/HBRespringController.h>
-#import "libappearancecell.h"
+#import <libappearancecell.h>
 
 @interface AFOAppearanceSettings : HBAppearanceSettings
 @end

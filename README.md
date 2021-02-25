@@ -6,7 +6,7 @@ Astolfo siri
 2. Install Astolfo
 
 ## Compiling
-  - Depends on libGcUniversal
+  - Depends on libimagepicker
   - You may want to edit the `Makefiles` to suit your theos installation
 
 ## Note

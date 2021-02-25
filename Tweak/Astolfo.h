@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
-#import "GcUniversal/GcImagePickerUtils.h"
 #import <Cephei/HBPreferences.h>
+#import "Astolfo_FLAnimatedImage.h"
 
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
@@ -8,7 +8,7 @@ HBPreferences* preferences;
 
 extern BOOL enabled;
 
-UIImageView* astolfoImageView;
+Astolfo_FLAnimatedImageView* astolfoImageView;
 
 // image customization
 BOOL useCustomAstolfoImageSwitch = NO;
